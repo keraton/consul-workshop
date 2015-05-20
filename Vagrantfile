@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :master do |master|
     master.vm.network "private_network", ip: "172.20.100.2"
+    master.vm.network "forwarded_port", guest: 8500, host: 8500
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.hostname = "master"
   end

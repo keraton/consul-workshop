@@ -12,7 +12,7 @@ Start a consul server on the master node
 
 ```bash
 vagrant ssh master
-nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.2 -node master &
+nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir /etc/consul.d/ -ui-dir /opt/consul-web/dist/ -bind 172.20.100.2 -client 0.0.0.0 -node master &
 ```
 
 Start a consul agent on an application node, and connect it to the master
@@ -41,5 +41,17 @@ Try to register a service on the master node, and check that the information is 
 
 Put a JSON-file in `/etc/consul.d` on the `master`. [The Consul service guide](https://www.consul.io/intro/getting-started/services.html)
 will help you.
+
+To reload configuration, run this command on the master node:
+
+```bash
+consul reload
+```
+
+
+Web console
+-----------
+
+After starting the master, the Consul web console is available on http://localhost:8500/ui/
 
 
