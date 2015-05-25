@@ -1,4 +1,4 @@
-package no.bekk;
+package no.bekk.service;
 
 import io.dropwizard.Configuration;
 

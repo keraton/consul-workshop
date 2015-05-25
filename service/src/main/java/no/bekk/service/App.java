@@ -1,4 +1,4 @@
-package no.bekk;
+package no.bekk.service;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
@@ -12,10 +12,11 @@ public class App extends Application<AppConfig>
     @Override
     public void run(AppConfig configuration, Environment environment) throws Exception {
         String port = System.getProperty("dw.server.applicationConnectors[0].port");
-        System.out.println("Service running on port " + port);
+        String ipAddress = System.getProperty("ipAddress");
+        System.out.println("Service listening on " + ipAddress + ":" + port);
 
-        environment.jersey().register(new HelloWorldResource());
+        environment.jersey().register(new ProducerResource(port, ipAddress));
 
-        environment.healthChecks().register("hello-world", new HelloWorldHealthCheck());
+        environment.healthChecks().register("produces", new ProducerHealthCheck());
     }
 }
