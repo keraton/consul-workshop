@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>no.bekk</groupId>
-    <artifactId>service</artifactId>
+    <artifactId>producer</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
