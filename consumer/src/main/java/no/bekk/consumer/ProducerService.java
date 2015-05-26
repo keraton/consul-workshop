@@ -11,7 +11,7 @@ public class ProducerService {
     public ProducerService() {
         Client client = ClientBuilder.newClient();
         target = client.target("http://172.20.100.6:8080")
-                .path("/producer");
+                .path("/");
     }
 
     public String produce() {
