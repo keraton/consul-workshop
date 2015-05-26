@@ -41,3 +41,5 @@ Assignment 4
 ============
 
 If you've got the time, try to integrate [consul-template](https://github.com/hashicorp/consul-template) with a loadbalancer (NginX/HAProxy/Apache)
+
+E.g. have an HAProxy instance loadbalance requests to a dynamic set of consumer apps.
