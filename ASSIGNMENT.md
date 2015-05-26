@@ -32,4 +32,12 @@ Your job is to decouple the consumer from that producer instance by introducing 
 Assignment 3
 ============
 
+Extend the startup script of the application to use the
+[maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance)
+to tell Consul the application is available when it starts, and mark it as
+unavailable when it exits.
+
+Assignment 4
+============
+
 If you've got the time, try to integrate [consul-template](https://github.com/hashicorp/consul-template) with a loadbalancer (NginX/HAProxy/Apache)
