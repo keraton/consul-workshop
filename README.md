@@ -12,7 +12,7 @@ Start a consul server on the master node
 
 ```bash
 vagrant ssh master
-nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir /etc/consul.d/ -ui-dir /opt/consul-web/dist/ -bind 172.20.100.2 -client 0.0.0.0 -node master &
+nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir /etc/consul.d/ -ui-dir /opt/consul-web/ -bind 172.20.100.2 -client 0.0.0.0 -node master &
 ```
 
 Start a consul agent on an application node, and connect it to the master
