@@ -27,14 +27,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.network "private_network", ip: "172.20.100.5"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.provision "file", source: "producer", destination: "producer"
+    master.vm.provision "file", source: "producer/run.sh", destination: "run.sh"
+    master.vm.provision "file", source: "producer/target/producer-1.0-SNAPSHOT.jar", destination: "producer-1.0-SNAPSHOT.jar"    
     master.vm.hostname = "app1"
   end
   config.vm.define :app2 do |master|
     master.vm.network "private_network", ip: "172.20.100.6"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.provision "file", source: "consumer", destination: "consumer"
+    master.vm.provision "file", source: "consumer/run.sh", destination: "run.sh"
+    master.vm.provision "file", source: "consumer/target/consumer-1.0-SNAPSHOT.jar", destination: "consumer-1.0-SNAPSHOT.jar"
     master.vm.hostname = "app2"
   end
   
