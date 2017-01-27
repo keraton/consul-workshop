@@ -13,5 +13,5 @@ java \
     -Ddw.server.applicationConnectors[0].port=$APP_PORT \
     -Ddw.server.adminConnectors[0].port=$ADMIN_PORT \
     -DipAddress=$IP_ADDRESS \
-    -jar target/producer-1.0-SNAPSHOT.jar \
+    -jar producer-1.0-SNAPSHOT.jar \
     server
