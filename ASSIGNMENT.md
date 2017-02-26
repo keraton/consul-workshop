@@ -3,9 +3,9 @@ Assignment 1
 
 1. Start a consul process as a server on the master node.
 
-2. Start a consul process as an agent on both app1 and app2.
+2. Start a consul process as an agent on both consumer and producer.
 
-3. Add a service with the name "producer" to /etc/consul.d on app1 and app2 and do a `consul reload`. [The Consul service guide](https://www.consul.io/intro/getting-started/services.html)
+3. Add a service with the name "producer" to /etc/consul.d on producer node and "consumer" for consumer node and do a "consul reload". [The Consul service guide](https://www.consul.io/intro/getting-started/services.html)
 
 4. Use the HTTP API and check that you got a result for the queried service
 ```bash
