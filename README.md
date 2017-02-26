@@ -14,11 +14,11 @@ vagrant ssh master
 nohup consul agent -server -bootstrap-expect 1 -data-dir /tmp/consul -config-dir /etc/consul.d/ -ui-dir /opt/consul-web/ -bind 172.20.100.2 -client 0.0.0.0 -node master &
 ```
 
-Start a consul agent on an application node, and connect it to the master
+Start a consul agent on an producer node, and connect it to the master
 
 ```bash
-vagrant ssh app1
-nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.5 -node app1 &
+vagrant ssh producer
+nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.5 -node producer &
 consul join 172.20.100.2
 consul members # list all members in the cluster
 ```
@@ -26,8 +26,8 @@ consul members # list all members in the cluster
 Start a consul agent on the other application node, and connect it to the master
 
 ```bash
-vagrant ssh app2
-nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.6 -node app2 &
+vagrant ssh consumer
+nohup consul agent -data-dir /tmp/consul -config-dir /etc/consul.d/ -bind 172.20.100.6 -node consumer &
 consul join 172.20.100.2
 consul members # list all members in the cluster
 ```
