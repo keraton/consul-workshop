@@ -23,17 +23,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.hostname = "master"
   end
-  config.vm.define :app1 do |master|
+  config.vm.define :producer do |master|
     master.vm.network "private_network", ip: "172.20.100.5"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.hostname = "app1"
+    master.vm.hostname = "producer"
   end
-  config.vm.define :app2 do |master|
+  config.vm.define :consumer do |master|
     master.vm.network "private_network", ip: "172.20.100.6"
     master.vm.provision "shell", path: "provision/install_consul.sh"
     master.vm.provision "shell", path: "provision/install_java.sh"
-    master.vm.hostname = "app2"
+    master.vm.hostname = "consumer"
   end
   
 end
