@@ -58,6 +58,7 @@ Ths json configuration for Producer
 ```bash
 echo '{"service": {"name": "producer", "tags": ["java"] }}' \
     | sudo tee /etc/consul.d/web.json
+consul reload
 ```
 
 ### Consumer 
@@ -68,6 +69,7 @@ The json configuration for Consumer.
 ```bash
 echo '{"service": {"name": "consumer", "tags": ["java"] }}' \
     | sudo tee /etc/consul.d/web.json
+consul reload    
 ```
 
 ## Web console
