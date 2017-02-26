@@ -1,6 +1,5 @@
 
-Initial setup
-=============
+# Initial setup
 
 Start three virtual servers with
 
@@ -33,24 +32,45 @@ consul join 172.20.100.2
 consul members # list all members in the cluster
 ```
 
+## Registering a service
 
-Registering a service
----------------------
+### Master
 
 Try to register a service on the master node, and check that the information is sent to all the application servers.
 
 Put a JSON-file in `/etc/consul.d` on the `master`. [The Consul service guide](https://www.consul.io/intro/getting-started/services.html)
 will help you.
 
-To reload configuration, run this command on the master node:
+```bash
+echo '{"service": {"name": "master", "tags": ["consul"] }}' \
+    | sudo tee /etc/consul.d/web.json
+```
+To reload configuration, run this command on all nodes:
 
 ```bash
 consul reload
 ```
 
+### Producer
 
-Web console
------------
+Ths json configuration for Producer 
+
+```bash
+echo '{"service": {"name": "producer", "tags": ["java"] }}' \
+    | sudo tee /etc/consul.d/web.json
+```
+
+### Consumer 
+
+The json configuration for Consumer.
+
+
+```bash
+echo '{"service": {"name": "consumer", "tags": ["java"] }}' \
+    | sudo tee /etc/consul.d/web.json
+```
+
+## Web console
 
 After starting the master, the Consul web console is available on http://localhost:8500/ui/
 
