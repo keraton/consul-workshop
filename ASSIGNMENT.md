@@ -24,10 +24,56 @@ The consumer app currently integrates with the producer on a hardcoded IP and po
 
 THIS IS NOT OK!!!
 
-Your job is to decouple the consumer from that producer instance by introducing a whiff of service discovery. How you do it is up to you:
-- By using consuls DNS API (NB: SRV records)
-- By using consuls HTTP API
-- Or some other way, if you've got any good ideas
+Your job is to decouple the consumer from that producer instance by introducing a whiff of service discovery. 
+- By using consuls DNS API (use dnsmasq)
+
+Consul run a DNS server in localhost at port 8600. But unfortunately java application can only use default port (53) to define the DNS server. So what we want to do in this exercice is to run another DNS server at the localhost but with the correct port number. We are going to use dnsmasq.
+
+1. Install dnsmasq
+```bash
+sudo apt-get install dnsmasq
+```
+
+2. Run dnsmasq
+```bash
+sudo /etc/init.d/dnsmasq restart
+```
+
+3. Test dnsmasq for google.com
+```bash
+dig @127.0.0.1 -p 53 google.com
+```
+You should have the ip address of google.com
+
+3. Test dnsmasq for master.service.consul
+```bash
+dig @127.0.0.1 -p 53 master.service.consul
+```
+You are not able to get the address of consul server.
+To fix this issue, we need to do a dns forwarding, we are going to forward all request vers consul address to consul's dns server.
+
+4. Configure forwarding
+```bash
+echo "server=/consul/127.0.0.1#8600" > /etc/dnsmasq.d/10-consul
+```
+
+5. Restart dnsmasq
+```bash
+sudo /etc/init.d/dnsmasq restart
+```
+
+3. Test dnsmasq
+```bash
+dig @127.0.0.1 -p 53 master.service.consul
+```
+
+4. Test use ping
+```bash
+ping master.service.consul
+```
+
+
+- By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
 
 Assignment 3
 ============
