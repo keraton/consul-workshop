@@ -4,7 +4,7 @@
 
 2. Start a consul process as an agent on both consumer and producer.
 
-3. Add a service with the name "master, "producer", "consumer" to /etc/consul.d on the respective node and do a "consul reload". [The Consul service guide](https://www.consul.io/intro/getting-started/services.html)
+3. Add a service with the name "master, "producer", "consumer" to /etc/consul.d on the respective node and do a "consul reload".(see https://github.com/keraton/consul-workshop/blob/master/README.md#registering-a-service)
 
 4. Use the HTTP API and check that you got a result for the queried service
 ```bash
