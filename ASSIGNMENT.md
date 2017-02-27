@@ -18,6 +18,39 @@ dig @127.0.0.1 -p 8600 <service name>.service.consul
 
 # Assignment 2
 
+Consul without application is not very interesting. There are two applications : producer and consumer. The consumer calls producer during its service.
+
+## Build application
+
+We are using vagrant in this exercise, the benefits of vagrant is that all files which in the same repository with the vagrant file are accessible in the vagrant node at /vagrant. Compile the application at local machine (use IntelliJ or Maven), the result will be automatically updated at all vagrant's node.
+
+
+## Run application
+
+1. Start producer : in the producer node do
+```bash
+cd /vagrant/producer
+./run.sh 8080 8081 #application port, admin port
+```
+
+2. Test producer : in the master node do
+```bash
+curl http://172.20.100.5:8080
+```
+
+3. Start consumer : in the consumer node do
+```bash
+cd /vagrant/consumer
+./run.sh 8080 8081 #application port, admin port
+```
+
+2. Test consumer : in the master node do
+```bash
+curl http://172.20.100.6:8080
+```
+
+# Assignment 3
+
 The consumer app currently integrates with the producer on a hardcoded IP and port.
 
 THIS IS NOT OK!!!
@@ -85,14 +118,14 @@ In the Consumer application you need to change ProducerService so it will use th
 
 ## By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
 
-# Assignment 3
+# Assignment 4
 
 Extend the startup script of the application to use the
 [maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance)
 to tell Consul the application is available when it starts, and mark it as
 unavailable when it exits.
 
-# Assignment 4
+# Assignment 5
 
 If you've got the time, try to integrate [consul-template](https://github.com/hashicorp/consul-template) with a loadbalancer (NginX/HAProxy/Apache)
 
