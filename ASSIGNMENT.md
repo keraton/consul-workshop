@@ -1,5 +1,4 @@
-Assignment 1
-============
+# Assignment 1
 
 1. Start a consul process as a server on the master node.
 
@@ -17,8 +16,7 @@ curl http://localhost:8500/v1/catalog/service/<service name>
 dig @127.0.0.1 -p 8600 <service name>.service.consul
 ```
 
-Assignment 2
-============
+# Assignment 2
 
 The consumer app currently integrates with the producer on a hardcoded IP and port.
 
@@ -26,8 +24,7 @@ THIS IS NOT OK!!!
 
 Your job is to decouple the consumer from that producer instance by introducing a whiff of service discovery. 
 
-By using consuls DNS API (use dnsmasq)
-=====================================
+## By using consuls DNS API (use dnsmasq)
 
 Consul run a DNS server in localhost at port 8600. But unfortunately java application can only use default port (53) to define the DNS server. So what we want to do in this exercice is to run another DNS server at the localhost but with the correct port number. We are going to use dnsmasq.
 
@@ -75,19 +72,16 @@ ping master.service.consul
 ```
 
 
-By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
-=======================================================================
+## By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
 
-Assignment 3
-============
+# Assignment 3
 
 Extend the startup script of the application to use the
 [maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance)
 to tell Consul the application is available when it starts, and mark it as
 unavailable when it exits.
 
-Assignment 4
-============
+# Assignment 4
 
 If you've got the time, try to integrate [consul-template](https://github.com/hashicorp/consul-template) with a loadbalancer (NginX/HAProxy/Apache)
 
