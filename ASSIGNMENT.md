@@ -26,7 +26,11 @@ Your job is to decouple the consumer from that producer instance by introducing 
 
 ## By using consuls DNS API (use dnsmasq)
 
-Consul run a DNS server in localhost at port 8600. But unfortunately java application can only use default port (53) to define the DNS server. So what we want to do in this exercice is to run another DNS server at the localhost but with the correct port number. We are going to use dnsmasq.
+Consul run a DNS server in localhost at port 8600. But unfortunately java application can only use default port (53) to define the DNS server. So what we want to do in this exercice is to run another DNS server at the localhost but with the correct port number. We are going to use dnsmasq. 
+
+### Change in the DNS
+
+In the master node :
 
 * Install dnsmasq
 ```bash
@@ -70,6 +74,13 @@ dig @127.0.0.1 -p 53 master.service.consul
 ```bash
 ping master.service.consul
 ```
+Redo all this in producer and consumer.
+
+### Change your application
+
+In the Consumer application you need to change ProducerService so it will use the domain instead of IP.
+
+### What is advantage of this approach ?
 
 
 ## By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
