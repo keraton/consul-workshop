@@ -1,20 +1,22 @@
 # Assignment 1
 
-1. Start a consul process as a server on the master node.
+* Start a consul process as a server on the master node.
 
-2. Start a consul process as an agent on both consumer and producer.
+* Start a consul process as an agent on both consumer and producer.
 
-3. Add a service with the name "master, "producer", "consumer" to /etc/consul.d on the respective node and do a "consul reload".(see https://github.com/keraton/consul-workshop/blob/master/README.md#registering-a-service)
+* Add a service with the name "master, "producer", "consumer" to /etc/consul.d on the respective node and do a "consul reload".(see https://github.com/keraton/consul-workshop/blob/master/README.md#registering-a-service)
 
-4. Use the HTTP API and check that you got a result for the queried service
+* Use the HTTP API and check that you got a result for the queried service
 ```bash
 curl http://localhost:8500/v1/catalog/service/<service name>
 ```
 
-5. Do the same with the DNS API
+* Do the same with the DNS API
 ```bash
 dig @127.0.0.1 -p 8600 <service name>.service.consul
 ```
+
+* See at the local post the consul UI : http://172.20.100.2:8500/ui/#/dc1/services 
 
 # Assignment 2
 
@@ -27,24 +29,24 @@ We are using vagrant in this exercise, the benefits of vagrant is that all files
 
 ## Run application
 
-1. Start producer : in the producer node do
+* Start producer : in the producer node do
 ```bash
 cd /vagrant/producer
 ./run.sh 8080 8081 #application port, admin port
 ```
 
-2. Test producer : in the master node do
+* Test producer : in the master node do
 ```bash
 curl http://172.20.100.5:8080
 ```
 
-3. Start consumer : in the consumer node do
+* Start consumer : in the consumer node do
 ```bash
 cd /vagrant/consumer
 ./run.sh 8080 8081 #application port, admin port
 ```
 
-2. Test consumer : in the master node do
+* Test consumer : in the master node do
 ```bash
 curl http://172.20.100.6:8080
 ```
