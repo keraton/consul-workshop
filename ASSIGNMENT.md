@@ -25,7 +25,9 @@ The consumer app currently integrates with the producer on a hardcoded IP and po
 THIS IS NOT OK!!!
 
 Your job is to decouple the consumer from that producer instance by introducing a whiff of service discovery. 
-- By using consuls DNS API (use dnsmasq)
+
+By using consuls DNS API (use dnsmasq)
+=====================================
 
 Consul run a DNS server in localhost at port 8600. But unfortunately java application can only use default port (53) to define the DNS server. So what we want to do in this exercice is to run another DNS server at the localhost but with the correct port number. We are going to use dnsmasq.
 
@@ -73,7 +75,8 @@ ping master.service.consul
 ```
 
 
-- By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
+By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
+=======================================================================
 
 Assignment 3
 ============
