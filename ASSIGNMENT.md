@@ -29,45 +29,45 @@ Your job is to decouple the consumer from that producer instance by introducing 
 
 Consul run a DNS server in localhost at port 8600. But unfortunately java application can only use default port (53) to define the DNS server. So what we want to do in this exercice is to run another DNS server at the localhost but with the correct port number. We are going to use dnsmasq.
 
-1. Install dnsmasq
+* Install dnsmasq
 ```bash
 sudo apt-get install dnsmasq
 ```
 
-2. Run dnsmasq
+* Run dnsmasq
 ```bash
 sudo /etc/init.d/dnsmasq restart
 ```
 
-3. Test dnsmasq for google.com
+* Test dnsmasq for google.com
 ```bash
 dig @127.0.0.1 -p 53 google.com
 ```
 You should have the ip address of google.com
 
-3. Test dnsmasq for master.service.consul
+* Test dnsmasq for master.service.consul
 ```bash
 dig @127.0.0.1 -p 53 master.service.consul
 ```
 You are not able to get the address of consul server.
 To fix this issue, we need to do a dns forwarding, we are going to forward all request vers consul address to consul's dns server.
 
-4. Configure forwarding
+* Configure forwarding
 ```bash
 echo "server=/consul/127.0.0.1#8600" > /etc/dnsmasq.d/10-consul
 ```
 
-5. Restart dnsmasq
+* Restart dnsmasq
 ```bash
 sudo /etc/init.d/dnsmasq restart
 ```
 
-3. Test dnsmasq
+* Test dnsmasq
 ```bash
 dig @127.0.0.1 -p 53 master.service.consul
 ```
 
-4. Test use ping
+* Test use ping
 ```bash
 ping master.service.consul
 ```
