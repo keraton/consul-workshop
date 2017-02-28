@@ -78,6 +78,13 @@
             <version>1.4</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.orbitz.consul</groupId>
+            <artifactId>consul-client</artifactId>
+            <version>0.13.12</version>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
