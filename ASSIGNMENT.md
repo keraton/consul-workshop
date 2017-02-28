@@ -24,7 +24,7 @@ Consul without application is not very interesting. There are two applications :
 
 ## Build application
 
-We are using vagrant in this exercise, the benefits of vagrant is that all files which in the same repository with the vagrant file are accessible in the vagrant node at /vagrant. Compile the application at local machine (use IntelliJ or Maven), the result will be automatically updated at all vagrant's node.
+We are using vagrant in this exercise, the benefits of vagrant is that all files which in the same repository with the Vagrant file are accessible in the vagrant node at /vagrant. Compile the application at local machine (use IntelliJ or Maven), the result will be automatically updated at all vagrant's node.
 
 
 ## Run application
@@ -73,8 +73,6 @@ consul reload
 * Did you see any change ?
 * Turn off the application
 * What is advantage of healthcheck.
-* Due to error with DIG, we should change the web.json back to before.
-
 
 # Assignment 3
 
@@ -168,7 +166,7 @@ consul reload
 Extend the application to register (or deregister) the application is available when it starts (or stop). 
 You can use Consul [maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance) or consul client [Client Consul github page](https://github.com/OrbitzWorldwide/consul-client).
 
-## Bonus add HealthCheck
+## Add HealthCheck
 
 You can use http-api to add healtch check.
 
