@@ -30,7 +30,10 @@ public class App extends Application<AppConfig> {
                 Consul consul = Consul.builder().build(); // connect to Consul on localhost
                 AgentClient agentClient = consul.agentClient();
 
-                agentClient.register(8080, Registration.RegCheck.http("http://localhost:8081/ping", 10), "producer", "1");
+                agentClient.register(Integer.valueOf(port),
+                                     Registration.RegCheck.http("http://localhost:8081/ping", 10),
+                                     "producer",
+                                     "1");
             }
 
             @Override
