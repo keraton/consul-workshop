@@ -24,6 +24,6 @@ sudo chown -R vagrant /opt/consul-web/
 ### Install consul-template
 
 wget -q -nc https://releases.hashicorp.com/consul-template/0.18.1/consul-template_0.18.1_linux_amd64.zip
-unzip cp-template_0.18.1_linux_amd64.zip
+unzip consul-template_0.18.1_linux_amd64.zip
 sudo cp consul-template /usr/local/bin
 sudo chmod 755 /usr/local/bin/consul-template
