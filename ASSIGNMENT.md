@@ -150,15 +150,23 @@ Consul expose their API in form of REST-HTTP. We can use java rest call to use t
 
 You can use Java/Consul-Client to do the service discovery using consul. The idea is to modify consumer so it will call consul to have the address of producer.
 
-* HTTP API : https://www.consul.io/docs/agent/http.html, https://www.consul.io/docs/agent/http/catalog.html
-* Client-Consul : https://github.com/OrbitzWorldwide/consul-client
+* HTTP API : [HTTP-API DOC](https://www.consul.io/docs/agent/http.html), [CATALOG-API DOC] (https://www.consul.io/docs/agent/http/catalog.html)
+* Client-Consul :[Client Consul github page](https://github.com/OrbitzWorldwide/consul-client)
 
 # Assignment 4
 
-Extend the startup script of the application to use the
-[maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance)
-to tell Consul the application is available when it starts, and mark it as
-unavailable when it exits.
+What we use until now is that the we configure service in the consul configuration file (/etc/consul.d/web.json). 
+But what we want is that the application can register their service when it start and deregister when it stop.
+First we remove the the service configuration.
+
+* Test use ping
+```bash
+rm /etc/consul.d/web.json
+consul reload
+```
+
+Extend the application to register (or deregister) the application is available when it starts (or stop). 
+You can use Consul [maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance) or consul client [Client Consul github page](https://github.com/OrbitzWorldwide/consul-client).
 
 # Assignment 5
 
