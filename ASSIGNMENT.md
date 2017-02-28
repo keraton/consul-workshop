@@ -159,7 +159,7 @@ What we use until now is that the we configure service in the consul configurati
 But what we want is that the application can register their service when it start and deregister when it stop.
 First we remove the the service configuration.
 
-* Test use ping
+* Remove the web.json
 ```bash
 rm /etc/consul.d/web.json
 consul reload
@@ -167,6 +167,10 @@ consul reload
 
 Extend the application to register (or deregister) the application is available when it starts (or stop). 
 You can use Consul [maintance API](https://www.consul.io/docs/agent/http/agent.html#agent_service_maintenance) or consul client [Client Consul github page](https://github.com/OrbitzWorldwide/consul-client).
+
+## Bonus add HealthCheck
+
+You can use http-api to add healtch check.
 
 # Assignment 5
 
