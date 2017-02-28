@@ -142,8 +142,16 @@ In the Consumer application you need to change ProducerService so it will use th
 
 ### What is advantage of this approach ?
 
+To discuss. 
 
-## By using consuls HTTP API (use the Consul client of Spring Boot/Orbitz)
+## By using consuls HTTP API (use the Consul client of Orbitz or Plain Java)
+
+Consul expose their API in form of REST-HTTP. We can use java rest call to use this API (RestTemplate) or use the existing library such as consul-client that has been developped by Orbitz.
+
+You can use Java/Consul-Client to do the service discovery using consul. The idea is to modify consumer so it will call consul to have the address of producer.
+
+* HTTP API : https://www.consul.io/docs/agent/http.html
+* Client-Consul : https://github.com/OrbitzWorldwide/consul-client
 
 # Assignment 4
 
