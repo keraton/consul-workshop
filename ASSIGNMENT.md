@@ -168,7 +168,7 @@ You can use Consul [maintance API](https://www.consul.io/docs/agent/http/agent.h
 
 ## Add HealthCheck
 
-You can use http-api to add healtch check.
+You can use http-api to add health check.
 
 # Assignment 5
 
