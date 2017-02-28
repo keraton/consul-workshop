@@ -175,3 +175,11 @@ You can use http-api to add health check.
 If you've got the time, try to integrate [consul-template](https://github.com/hashicorp/consul-template) with a loadbalancer (NginX/HAProxy/Apache)
 
 E.g. have an HAProxy instance loadbalance requests to a dynamic set of producer apps.
+
+# Assignment 6
+
+If you've still got some time, try to change dynamically the message send by consumer or producer. 
+Use the key/values store within the consul.
+
+* Create a listener which will listen any change of key values
+* Update the message using consul ui.
