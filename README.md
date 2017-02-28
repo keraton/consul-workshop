@@ -56,7 +56,7 @@ consul reload
 Ths json configuration for Producer 
 
 ```bash
-echo '{"service": {"name": "producer", "tags": ["java"] }}' \
+echo '{"service": {"name": "producer", "tags": ["java"], "port" : 8080 }}' \
     | sudo tee /etc/consul.d/web.json
 consul reload
 ```
@@ -67,7 +67,7 @@ The json configuration for Consumer.
 
 
 ```bash
-echo '{"service": {"name": "consumer", "tags": ["java"] }}' \
+echo '{"service": {"name": "consumer", "tags": ["java"], "port" : 8080 }}' \
     | sudo tee /etc/consul.d/web.json
 consul reload    
 ```
