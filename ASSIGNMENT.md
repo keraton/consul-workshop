@@ -16,7 +16,7 @@ curl http://localhost:8500/v1/catalog/service/<service name>
 dig @127.0.0.1 -p 8600 <service name>.service.consul
 ```
 
-* See at the local post the consul UI : http://172.20.100.2:8500/ui/#/dc1/services 
+* See at the local post, the consul UI : http://172.20.100.2:8500/ui/#/dc1/services 
 
 # Assignment 2
 
@@ -50,6 +50,31 @@ cd /vagrant/consumer
 ```bash
 curl http://172.20.100.6:8080
 ```
+
+* See at the local post, the consul UI : http://172.20.100.2:8500/ui/#/dc1/services 
+* Did you see any change ?
+
+## Add HealthCheck
+
+* Test healthcheck : in the master node do
+```bash
+curl http://172.20.100.5:8081/ping # Producer
+curl http://172.20.100.6:8081/ping # Consumer
+```
+
+* Add HeatlhCheck in the producer node
+```bash
+echo '{"service": {"id":"producer", "name": "producer", "tags": ["java"]}, "port":8080, "check": { "http": "http://localhost:8081/ping", "interval": "10s", "timeout": "1s"}}'  | sudo tee  /etc/consul.d/web.json
+consul reload
+```
+
+
+* See at the local post, the consul UI : http://172.20.100.2:8500/ui/#/dc1/services 
+* Did you see any change ?
+* Turn off the application
+* What is advantage of healthcheck.
+* Due to error with DIG, we should change the web.json back to before.
+
 
 # Assignment 3
 
