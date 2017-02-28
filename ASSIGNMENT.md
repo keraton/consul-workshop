@@ -150,7 +150,7 @@ Consul expose their API in form of REST-HTTP. We can use java rest call to use t
 
 You can use Java/Consul-Client to do the service discovery using consul. The idea is to modify consumer so it will call consul to have the address of producer.
 
-* HTTP API : https://www.consul.io/docs/agent/http.html
+* HTTP API : https://www.consul.io/docs/agent/http.html, https://www.consul.io/docs/agent/http/catalog.html
 * Client-Consul : https://github.com/OrbitzWorldwide/consul-client
 
 # Assignment 4
