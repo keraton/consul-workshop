@@ -10,8 +10,11 @@ public class ProducerService {
 
     public ProducerService() {
         Client client = ClientBuilder.newClient();
-        target = client.target("http://172.20.100.6:8080")
-                .path("/");
+
+        // Using DNS
+        target = client.target("http://producer.service.consul:8080")
+                 .path("/");
+
     }
 
     public String produce() {
