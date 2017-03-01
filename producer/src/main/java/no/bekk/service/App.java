@@ -31,9 +31,10 @@ public class App extends Application<AppConfig> {
                 AgentClient agentClient = consul.agentClient();
 
                 agentClient.register(Integer.valueOf(port),
-                                     Registration.RegCheck.http("http://localhost:8081/ping", 10),
+                                     Registration.RegCheck.http("http://localhost:" + (Integer.valueOf(port)+1) + "/ping", 10),
                                      "producer",
-                                     "1");
+                                     "producer" + Integer.valueOf(port),  // ServiceID
+                                     "producer" + Integer.valueOf(port)); // Tag
             }
 
             @Override
@@ -43,7 +44,7 @@ public class App extends Application<AppConfig> {
                 Consul consul = Consul.builder().build(); // connect to Consul on localhost
                 AgentClient agentClient = consul.agentClient();
 
-                agentClient.deregister("producer");
+                agentClient.deregister("producer" + Integer.valueOf(port));
 
             }
         });
