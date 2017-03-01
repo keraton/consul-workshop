@@ -174,7 +174,40 @@ You can use http-api to add health check.
 
 If you've got the time, try to integrate [consul-template](https://github.com/hashicorp/consul-template) with a loadbalancer (NginX/HAProxy/Apache)
 
-E.g. have an HAProxy instance loadbalance requests to a dynamic set of producer apps.
+* Install HAProxy 
+```bash
+sudo apt-get install haproxy
+```
+
+* Create a haproxy.tmpl in the /etc/haproxy/
+```yml
+global
+        daemon
+        maxconn 256
+
+    defaults
+        mode http
+        timeout connect 5000ms
+        timeout client 50000ms
+        timeout server 50000ms
+
+    listen http-in
+        bind *:8000
+        balance roundrobin 
+        {{ range service "producer"  }}
+        server {{ .Node  }} {{.Address  }}:{{ .Port  }} {{ end  }}
+```
+
+* Run consul-template in the /etc/haproxy
+```bash
+consul-template -consul-addr 172.20.100.2:8500 -template "haproxy.tmpl:haproxy.cfg" &
+```
+
+* Run multiple server producer and see what happen.
+
+Disclaimer, I don't manage to run the load balancer haproxy properly.
+
+
 
 # Assignment 6
 
