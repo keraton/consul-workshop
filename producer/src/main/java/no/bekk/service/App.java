@@ -1,6 +1,10 @@
 package no.bekk.service;
 
+import com.orbitz.consul.AgentClient;
+import com.orbitz.consul.Consul;
+import com.orbitz.consul.model.agent.Registration;
 import io.dropwizard.Application;
+import io.dropwizard.lifecycle.Managed;
 import io.dropwizard.setup.Environment;
 
 public class App extends Application<AppConfig>
@@ -16,7 +20,27 @@ public class App extends Application<AppConfig>
         System.out.println("Service listening on " + ipAddress + ":" + port);
 
         environment.jersey().register(new ProducerResource(port, ipAddress));
-
         environment.healthChecks().register("produces", new ProducerHealthCheck());
+        environment.lifecycle().manage(new Managed() {
+
+            @Override
+            public void start() throws Exception {
+               onStart();
+            }
+
+            @Override
+            public void stop() throws Exception {
+               onStop();
+            }
+        });
+
+    }
+
+    private void onStop() {
+        // Stopping hook
+    }
+
+    private void onStart() {
+        // Starting hook
     }
 }
